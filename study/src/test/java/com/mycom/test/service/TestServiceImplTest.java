@@ -1,3 +1,4 @@
+/*
 package com.mycom.test.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -47,13 +48,15 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+*/
 /**
  * @author ：songdalin
  * @date ：2022/11/7 下午 5:07
  * @description：
  * @modified By：
  * @version: 1.0
- */
+ *//*
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestServiceImplTest {
@@ -63,10 +66,12 @@ public class TestServiceImplTest {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    /**
+    */
+/**
      * 创建索引
      * @throws IOException
-     */
+     *//*
+
     @Test
     public void createIndex() throws IOException {
         //创建索引库参数
@@ -85,9 +90,11 @@ public class TestServiceImplTest {
         System.out.println("index 创建结果：" + acknowledged);
     }
 
-    /**
+    */
+/**
      * 查询索引
-     */
+     *//*
+
     @Test
     @SneakyThrows
     public void queryIndex() {
@@ -98,9 +105,11 @@ public class TestServiceImplTest {
         System.out.println("索引 mapping：" + getIndexResponse.getMappings());
     }
 
-    /**
+    */
+/**
      * 删除索引
-     */
+     *//*
+
     @Test
     @SneakyThrows
     public void deleteIndex() {
@@ -111,12 +120,14 @@ public class TestServiceImplTest {
         System.out.println("删除结果：" + delete.isAcknowledged());
     }
 
-    /**
+    */
+/**
      * 添加文档
-     */
+     *//*
+
     @Test
     public void addDoc() throws IOException {
-        User user = new User("小兔", 12, "我是小兔，和嗷大喵是朋友");
+        User user = new User(1L,"小兔", 12, "我是小兔，和嗷大喵是朋友");
         final IndexRequest request = new IndexRequest("my_first_idnex");
         request.id("2");
         request.source(objectMapper.writeValueAsString(user), XContentType.JSON);
@@ -125,10 +136,12 @@ public class TestServiceImplTest {
         System.out.println(response.status());
     }
 
-    /**
+    */
+/**
      * 查询文档是否存在
      * @throws IOException
-     */
+     *//*
+
     @Test
     public void existsDoc() throws IOException {
         final GetRequest request = new GetRequest("my_first_idnex", "2");
@@ -136,9 +149,11 @@ public class TestServiceImplTest {
         System.out.println(exists);
     }
 
-    /**
+    */
+/**
      *     获取文档信息
-     */
+     *//*
+
     @Test
     public void getDoc() throws IOException {
         final GetRequest request = new GetRequest("my_first_idnex", "2");
@@ -146,26 +161,30 @@ public class TestServiceImplTest {
         System.out.println(response.getSource());
     }
 
-    /**
+    */
+/**
      * 更新文档
-     */
+     *//*
+
     @Test
     public void updateDoc() throws IOException {
         //UpdateRequest request = new UpdateRequest("my_first_idnex", "1");
         //这两处都设置了id，后面的为准
         UpdateRequest request = new UpdateRequest("my_first_idnex", "1");
         request.id("2");
-        User dam = new User("大喵1号", 99, "更新后的信息");
+        User dam = new User(1l, "大喵1号", 99, "更新后的信息");
         request.doc(objectMapper.writeValueAsString(dam), XContentType.JSON);
         final UpdateResponse response = restHighLevelClient.update(request, RequestOptions.DEFAULT);
         System.out.println(response);
 
     }
 
-    /**
+    */
+/**
      * 删除文档
      * @throws IOException
-     */
+     *//*
+
     @Test
     public void deleteDoc() throws IOException {
         final DeleteRequest deleteRequest = new DeleteRequest("my_first_idnex");
@@ -174,18 +193,20 @@ public class TestServiceImplTest {
         System.out.println(response);
     }
 
-    /**
+    */
+/**
      * 批量插入
-     */
+     *//*
+
     @Test
     public void batchAdd() throws IOException {
         List<User> list = new ArrayList<>();
-        User user = new User("张三", 1, "这里是张三");
-        User user2 = new User("李四", 1, "李四");
-        User user3 = new User("李四1", 1, "李四");
-        User user4 = new User("李四2", 1, "李四");
-        User user5 = new User("李四3", 1, "李四");
-        User user6 = new User("李四4", 1, "张三");
+        User user = new User(1l, "张三", 1, "这里是张三");
+        User user2 = new User(1l, "李四", 1, "李四");
+        User user3 = new User(1l, "李四1", 1, "李四");
+        User user4 = new User(1l, "李四2", 1, "李四");
+        User user5 = new User(1l, "李四3", 1, "李四");
+        User user6 = new User(1l, "李四4", 1, "张三");
         list.add(user2);
         list.add(user3);
         list.add(user4);
@@ -202,9 +223,11 @@ public class TestServiceImplTest {
         System.out.println(response.status());
 
     }
-    /**
+    */
+/**
      * 查询
-     */
+     *//*
+
     @Test
     public void search() throws IOException {
         SearchRequest searchRequest = new SearchRequest("my_first_idnex");
@@ -228,3 +251,4 @@ public class TestServiceImplTest {
 
 }
 
+*/
