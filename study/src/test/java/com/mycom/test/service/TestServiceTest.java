@@ -53,6 +53,17 @@ public class TestServiceTest {
     }
 
 
+    @Test
+    public void count() {
+        testService.countDoc();
+    }
+
+    @Test
+    public void getAllNotPage() {
+        testService.getAllNotPage();
+    }
+
+
 
 
 

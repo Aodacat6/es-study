@@ -109,7 +109,15 @@ public class TestServiceImpl {
         list.forEach(System.out::println);
     }
 
+    /**
+     *
+     * 超过10000的深度分页，推荐采用search_after + PIT。
+     *
+     *
+     *
+     */
     public void findTextField() {
+        //text字段查询
         String depCodeName = "小V";
         final Pageable pageable = PageRequest.of(10, 1000, Sort.unsorted());
         final Page<OrderInfo> page = orderInfoRepository.findOrderInfoByDeptCodeName(depCodeName, pageable);
@@ -118,6 +126,24 @@ public class TestServiceImpl {
             return;
         }
         for (OrderInfo orderInfo : page.getContent()) {
+            System.out.println(orderInfo);
+        }
+    }
+
+    /**
+     * 统计
+     */
+    public void countDoc() {
+        System.out.println("======" + orderInfoRepository.count());
+    }
+
+    /**
+     * 看看是否会报最大10000条的错
+     *          一样会报错
+     */
+    public void getAllNotPage() {
+        final Iterable<OrderInfo> all = orderInfoRepository.findAll();
+        for (OrderInfo orderInfo : all) {
             System.out.println(orderInfo);
         }
     }
